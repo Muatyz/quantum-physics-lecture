@@ -1,0 +1,383 @@
+\documentclass[UTF8,a4paper,10pt]{ctexart}
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry}
+%页边距
+\CTEXsetup[format={\Large\bfseries}]{section} %设置章标题居左
+%%%%%%%%%%%%%%%%%%%%%%%
+% -- text font --
+% compile using Xelatex
+%%%%%%%%%%%%%%%%%%%%%%%
+% -- 中文字体 --
+%\setmainfont{Microsoft YaHei}  % 微软雅黑
+%\setmainfont{YouYuan}  % 幼圆    
+%\setmainfont{NSimSun}  % 新宋体
+%\setmainfont{KaiTi}    % 楷体
+%\setmainfont{SimSun}   % 宋体
+%\setmainfont{SimHei}   % 黑体
+% -- 英文字体 --
+\usepackage{times}
+%\usepackage{mathpazo}
+%\usepackage{fourier}
+%\usepackage{charter}
+
+%\usepackage{helvet}
+
+\usepackage{amsmath, amsfonts, amssymb} % math equations, symbols
+\usepackage[english]{babel}
+\usepackage{color}	% color content
+\usepackage{graphicx}	% import figures
+\usepackage{url}	% hyperlinks
+\usepackage{bm} 	% bold type for equations
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{epstopdf}
+\usepackage{epsfig}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{zhnumber}
+\usepackage{longtable}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subfigure}
+\renewcommand\thesection{\zhnum{section}}
+\renewcommand\thesubsection{\arabic{section}}
+\renewcommand{\algorithmicrequire}{ \textbf{Input:}}
+% use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{ \textbf{Initialize:}}
+% use Initialize in the format of Algorithm  
+\renewcommand{\algorithmicreturn}{ \textbf{Output:}}
+% use Output in the format of Algorithm
+%%简化编写公式难度
+\usepackage{braket} %量子算符宏包 
+
+%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,%设置行号位置none不显示行号
+  %numberstyle=\tiny\courier, %设置行号大小
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  escapeinside=``,%逃逸字符(1左面的键)，用于显示中文例如在代码中`中文...`
+  tabsize=4,
+  extendedchars=false %解决代码跨页时，章节标题，页眉等汉字不显示的问题
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr} %设置页眉、页脚
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+%\rhead{\includegraphics[width=1.2cm]{fig/ZJU_BLUE.eps}}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\fancyfoot[RE,RO]{~\thepage~}
+
+\fancyhead[RE,RO]{量子力学  \quad 2022春季学期   \quad 何翼成}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%  设置水印
+%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{draftwatermark}         % 所有页加水印
+%\usepackage[firstpage]{draftwatermark} % 只有第一页加水印
+% \SetWatermarkText{Water-Mark}           % 设置水印内容
+% \SetWatermarkText{\includegraphics{fig/ZJDX-WaterMark.eps}}         % 设置水印logo
+% \SetWatermarkLightness{0.9}             % 设置水印透明度 0-1
+% \SetWatermarkScale{1}                   % 设置水印大小 0-1    
+
+\usepackage{hyperref} %bookmarks
+\hypersetup{colorlinks, bookmarks, unicode} %unicode
+
+\title{\textbf{量子力学复习笔记}}
+\author{ 何翼成 \thanks{学号:520072910043; \newline
+    邮箱地址：heyicheng@sjtu. edu. cn} }
+\date{\today}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%这是一篇中文小论文。这个部分用来写摘要。摘要的章标题默认是英文，还没找到改成中文的方法:(
+%\end{abstract}
+\tableofcontents
+\section{对量子力学的初步认知}
+\subsection{Bohr-Sommerfiled条件}
+\subsubsection{引理}
+$\oint p_{k}\mathrm{d}q_{k}=n_{k}h,n_{k}=1,2,3\dots$\newline
+
+其中$\oint$代表的是周期积分，它必须要包括这个运动的一个完整周期。而$p_{k},q_{k}$则代表了一对共轭的正则坐标与动量。这意味着，不仅仅是
+一维情况中普遍存在的p，x问题，对于其它类似的量同样可以进行运算。\newline
+
+但是要注意的是，这个量子化条件是对量子力学的初步认知，得到的结果并不完整，比如下面的谐振子的问题，量子力学求解得到的答案就是$E_{n}=(n+\frac{1}{2})\hbar\omega$
+\subsubsection{"一个完整周期"的具体例子}
+
+使用量子化条件求解谐振子的能量，谐振子势能$V(x)=\frac{mw^2x^2}{2}$.
+\begin{equation}
+    解：
+    \oint p\mathrm{d}x=2\int_{-a}^{a}\mathrm{d}x\sqrt{2m(E-\frac{1}{2}mw^2x^2)}
+\end{equation}
+\quad \newline
+
+其中 $a$即为$x_{m}$，x空间内所能运动范围的最大值，通过代入条件$v=0$即可得到$a=\sqrt{2E/mw^2}$.
+重点在于该式中积分符号前的2，它代表了谐振子从$-a$到$a$仅经过了一个$\frac{T}{2}$
+\subsubsection{其它正则共轭坐标与动量的应用}
+0.正则坐标的原始定义
+拉格朗日量为$L(q,\dot q,t)=T(q,\dot q,t)-V(q,t)$。\quad \newline
+
+哈密顿量为$H(q,p,t)=\sum_{i} \dot q_{i}p_{i} -L$\quad \newline
+
+哈密顿方程形式为：
+\(
+    \left\{
+        \begin{aligned}
+        &\text{$\dot q_{i}=\frac{\partial H}{\partial p_{i}}$}  \\
+        &\text{$\dot p_{i}=-\frac{\partial H}{\partial q_{i}}$}
+        \end{aligned}
+    \right\}
+\)
+    \newline
+
+1.平面转子的能量允许值
+设转子的转动惯量为$I$,则有$L\cdot 2\pi=nh$,化简即为$L=n\hbar$,代入转子的动能表达式即有$E=\frac{L^2}{2I}=\frac{n^2\hbar^2}{2I}$
+
+\section{一维波函数的研究}
+\subsection{时间因子}
+这是一类经典的题目，即已知初态函数$\psi(x,0)$，求解其完整演化形式$\psi(x,t)$。\newline
+
+解决方法通常是：1.若哈密顿量$\hat{H}$不含时，就可以考虑将原函数$\psi(x,0)$乘上时间因子$e^{-\frac{i\hat{H}t}{\hbar}}$；\newline
+
+2.可以求解传播子（Propagator）函数，然后求解$\psi(x,t)=\int_{-\infty}^{\infty}dx'G(x,x';t,t')\psi(x,0)$(这里的积分形式为一维，若要拓展为三维空间
+大致同理)\newline
+
+比如一维自由粒子的传播子是$G(x,x';t,t')=\sqrt{\frac{m}{2\pi\hbar t}}e^{\frac{im}{2\hbar}\frac{(x-x')^2}{t-t'}}$
+通过求解初态为$\psi(x,0)=\delta(x)$的自由一维粒子的$\psi(x,t)$，我们可以导出传播子的具体形式。（这也说明了格林函数定义的物理图像是怎样的）\newline
+
+引理：$\int_{-\infty}^{\infty}e^{ix^2}dx=\sqrt{\pi}e^{i\pi/4}$(Fresnel积分公式)\newline
+
+先将其初态函数傅里叶变换为动量表象:$\int_{-\infty}^{\infty}\delta(x)e^{-ipx/\hbar}dx=1$,
+然后将其转回傅里叶变换形式：$\psi(x,0)=\delta(x)=\frac{1}{2\pi\hbar}\int_{-\infty}^{\infty}dpe^{ipx/\hbar}$,
+这样就可以乘上时间因子，得到$\psi(x,t)=e^{-\frac{i\hat{H}t}{\hbar}}\psi(x,0)=e^{-\frac{it}{\hbar}\frac{\hat{p}^2}{2m}}\psi(x,0)$,
+利用平面波的本征方程，我们可以放心地将算符$\hat{p}$代入到积分式中参与运算，即$\psi(x,t)=\frac{1}{2\pi\hbar}\int_{-\infty}^{\infty}dpe^{-i\frac{p^2t}{2m\hbar}+\frac{i}{\hbar}px}$,
+利用换元法$-i\frac{p^2t}{2m\hbar}+\frac{i}{\hbar}px=\frac{-it}{2m}(p-\frac{mx}{t})^2+i\frac{mx^2}{2t}$,
+即可计算积分式得到传播子的方程形式(当然，在这里默认了x'=0,t'=0)\newline
+
+\subsubsection{方法一：乘上传播子后进行空间上的积分}
+这个方法通常需要用到一个广义Guass积分式
+\begin{equation}
+    \int_{-\infty}^{\infty}dxe^{-\alpha x^2+\beta x}=\sqrt{\frac{\pi}{\alpha}}e^{\frac{\beta^2}{4\alpha}}
+\end{equation}
+若有$\psi(x,0)=\frac{1}{(2\pi\hbar)^{1/2}}e^{ip_{0}x/\hbar}$,
+则有$\psi(x,t)=\int_{-\infty}^{\infty}dx'G(x,x';t,t')\psi(x,0)=\frac{1}{(2\pi\hbar)^{1/2}}e^{i(p_{0}x-\frac{p_{0}^2t}{2m})/\hbar}$
+\subsubsection{方法二：乘上时间因子}
+这个方法根据$\hat{H}$的使用方法而异，比如有的情景就是简单的化为含$\hat{p}$的形式，有时候则需要将其写作偏微分形式或者$\nabla$算子形式。
+经过一些讨论我们还能得到进一步的结论。\newline
+
+$\hat{H}=\frac{\hat{p}^2}{2m}=-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}$,
+那么就有$\psi(x,t)=\sum_{n=0}^{\infty}\frac{1}{n!}(\frac{i\hbar t}{2m})^n\frac{\partial^{2n}}{\partial x^{2n}}\psi(x,0)$
+其中还有平移算符以及对应的结论：$e^{a\frac{\partial}{\partial z}}f(z)=f(z+a)$\newline
+
+\subsubsection{傅里叶变换与动量表象}
+$-\frac{\hbar^2}{2\mu}\frac{\partial^2}{\partial x^2}\psi(x)+V(x)\psi(x)=E\psi(x)$
+$\frac{p^2}{2\mu}\phi(p)+V(i\hbar\frac{\partial}{\partial p})\phi(p)=E\phi(p)$\newline
+
+三维形式则是 \newline
+
+$\frac{\boldsymbol{p}^2}{2\mu}\phi(\boldsymbol{p})+V(i\hbar\nabla_{p})\phi(\boldsymbol{p})=E\phi(\boldsymbol{p})$\newline
+
+以动量表象求解薛定谔方程：
+$V(x)=-V_{0}\delta(x)$的束缚态能级和本征函数。\newline
+
+\begin{equation}
+    \begin{aligned}
+&\frac{p^2}{2m}\phi(p)+\int_{-\infty}^{\infty}V(pp')\phi(p')dp'=E\phi(p),\\
+&V_{pp'}=\frac{1}{2\pi\hbar}\int_{-\infty}^{\infty}dxV(x)e^{i(p-p')x/\hbar}=-\frac{V_{0}}{2\pi\hbar},\\
+&(\frac{p^2}{2m}-E)\phi(p)=\frac{V_{0}}{2\pi\hbar}\int_{-\infty}^{\infty}\phi(p')dp'=\textit{Const.}\\
+&\phi(p)=\frac{2mC}{P^2-2mE}=\frac{A}{p^2-2mE}(A\text{为归一化系数})\\
+&\int_{-\infty}^{\infty}\frac{dp}{p^2-2mE}=\frac{\pi\hbar}{mV_{0}}\\
+&1=\int|\phi(p)|^2dp=|A|^2\frac{\pi}{2(\hbar k)^3},k=\frac{mV_{0}}{2\hbar^2}\\
+&E=-\frac{mV_{0}^2}{2\hbar^2}\\
+&A=(\frac{2}{\pi})^{1/2}(\frac{mV_{0}}{\hbar})^{3/2}\\
+&\psi(x)=\frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}\frac{dp}{\phi(p)}e^{ipx/\hbar}\\
+&\Longrightarrow \psi(x)=\sqrt{k}e^{-k|x|}
+\end{aligned}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+        &\text{利用波函数验证不确定性关系}\\
+        &<p>=\int p|\phi(p)|^2dp=0,<p^2>=\int p^2|\phi(p)|^2dp=\hbar^2k^2\\
+        &\Delta p=\sqrt{<p^2>-<p>^2}=\hbar k;\\
+        &\hat{x}=i\hbar\frac{\partial}{\partial p}\\
+        &\Longrightarrow <x>=i\hbar\int_{-\infty}^{\infty}\phi\frac{d\phi}{dp}dp=0,\\
+        &<x^2>=(i\hbar)^2\int_{-\infty}^{\infty}\phi\frac{d^2\phi}{dp^2}dp=\frac{1}{2k^2},\\
+        &\Delta x=\sqrt{<x^2>-<x>^2}=\sqrt{2k^2}\\
+        &\Longrightarrow \Delta x \cdot \Delta p =\frac{\hbar}{\sqrt{2}}\geqslant \hbar/2
+    \end{aligned}
+\end{equation}
+
+\subsection{一维定态问题}
+\section{算符与狄拉克符号}
+算符的本质是矩阵,态的本质是一个矢量.利用类似于线性代数的方法来处理涉及狄拉克符号的方程的计算,将是非常有助益的.
+\subsection{矢量,算符,矩阵}
+\subsubsection{狄拉克符号}
+$\Bra{a}$是左矢(bra),在线性代数中是指行矢量;$\Ket{a}$是右矢(ket),在线性代数中是指列矢量.而$\Bra{a}$与$\Ket{a}$互为共轭转置关系.
+所以$\Bra{a}\Ket{a}$相当于进行了一次内积运算,得到一个实数;$\Ket{a}\Bra{a}$相当于一次外积运算,得到一个矩阵.\newline
+
+根据左矢和右矢的关系,我们可以得到性质:$\Bra{\psi}\Ket{\phi}^{*}=\Bra{\phi}\Ket{\psi}$.\newline
+
+计算本征值时,所常用的方程是$\hat{A}|\psi\rangle=\lambda|\psi\rangle$.这说明了在运算中正如熟悉的线性代数那样,将$\hat{A}$看做了一个矩阵,
+而参与运算的矢量的确是列矢量.\newline
+
+如果要得到一个矩阵的第i行第j列的元素$A_{ij}$,我们可以使用乘积运算来得到它:$A_{ij}=\Bra{i}\hat{A}\Ket{j}$.\newline
+
+\subsubsection{常用算符及其推导}
+首先定义对易运算:$[\hat{A},\hat{B}]=\hat{A}\hat{B}-\hat{B}\hat{A}$.
+若$[\hat{A},\hat{B}]=0$,则称$\hat{A},\hat{B}$这两个算符对易(即没有先后作用的区别:$\hat{A}\hat{B}\Ket{\psi}=\hat{B}\hat{A}\Ket{\psi}$)\newline
+
+其次是对易运算的一些运算性质(和泊松括号区分开).\\
+$[\hat{A}\hat{B},\hat{C}]=\hat{A}\hat{B}\hat{C}-\hat{C}\hat{A}\hat{B}=(\hat{A}\hat{B}\hat{C}-\hat{A}\hat{C}\hat{B})+(\hat{A}\hat{C}\hat{B}-\hat{C}\hat{A}\hat{B})
+=\hat{A}[\hat{B},\hat{C}]+[\hat{A},\hat{C}]\hat{B}.$
+
+
+\begin{itemize}
+\item 升降算符
+寻找到一对算符$\hat{Q}_{+},\hat{Q}_{-}$使得
+$[\hat{Q},\hat{Q}_{\pm}]=\pm\alpha\hat{Q}_{\pm}$.若原本存在本征关系$\hat{Q}\Ket{\psi}=q\Ket{\psi}$,
+那么可以得到关系$\hat{Q}_{\pm}\hat{Q}\Ket{\psi}=(q+\alpha)\hat{Q}_{\pm}\Ket{\psi}$.\newline
+
+\item 角动量算符.
+ $\hat{L}=\hat{r}\times\hat{p}=(\vec{r})\times(-i\hbar\nabla)=-i\hbar\vec{r}\times\nabla$\\
+ 角动量的三个分量并不具有共同的本征矢,所以无法写出$\hat{L}\Ket{\psi}=\lambda\Ket{\psi}$这样的方程.
+ 但是角动量平方和角动量的各个分量是对易的(它们具有共同的本征态).
+它们的关系可以写作
+\(
+    \left\{
+        \begin{aligned}
+        &[\hat{L}_{x},\hat{L}_{y}]=i\hbar\hat{L}_{z}\\
+        &[\hat{L}_{y},\hat{L}_{z}]=i\hbar\hat{L}_{x}\\
+        &[\hat{L}_{z},\hat{L}_{x}]=i\hbar\hat{L}_{y}
+        \end{aligned}
+    \right\}
+\)
+
+\item 时间求导算符
+
+\end{itemize}
+\subsection{计算例题}
+
+\subsubsection{一维谐振子的升降算符}
+对于在势场$V(x)=\frac{1}{2}mw^2x^2$中的一维谐振子,其哈密顿算符是$\hat{H}=\frac{\hat{p}^2+m^2w^2\hat{x}^2}{2m}$.\newline
+
+构造升降算符$\hat{a}_{\pm}=\frac{mw\hat{x}\mp i\hat{p}}{\sqrt{2mw\hbar}}$
+
+即有
+\begin{equation}
+    \begin{aligned}
+        &\hat{a}_{+}\psi_{n}=\sqrt{n+1}\psi_{n+1};\hat{a}_{-}\psi_{n}=\sqrt{n}\psi_{n-1}\\
+        &[\hat{H},\hat{a}_{\pm}]=\frac{1}{2m\sqrt{2mw\hbar}}[\hat{p}^2+m^2w^2\hat{x}^2,mw\hat{x}\mp i\hat{p}]\\
+        &=\frac{1}{2m\sqrt{2mw\hbar}}([\hat{p}^2,mw\hat{x}]\mp[\hat{p}^2,i\hat{p}]+[m^2w^2\hat{x}^2,mw\hat{x}]\pm[m^2w^2\hat{x}^2,i\hat{p}])\\
+        &(\text{代入}[\hat{p}^2,mw\hat{x}]=mw(\hat{p}[\hat{p},\hat{x}]+[\hat{p},\hat{x}]\hat{p})=-2imw\hbar\hat{p},[m^2w^2\hat{x}^2,i\hat{p}]=im^{2}w^{2}[\hat{x}^{2},\hat{p}]=im^2w^2(\hat{x}[\hat{x},\hat{p}]+[\hat{x},\hat{p}]\hat{x})=-2m^2w^2\hbar\hat{x}\\
+        &[\hat{p}^2,i\hat{p}]=[m^2w^2\hat{x}^2,mw\hat{x}]=0;[\hat{p},\hat{x}]=-i\hbar)\\
+        &[\hat{H},\hat{a}_{\pm}]=\frac{-2imw\hbar\hat{p}\pm 2m^2w^2\hbar\hat{x}}{2m\sqrt{2mw\hbar}}=\pm\frac{w\hbar(mw\hat{x}\mp i\hat{p})}{2m\sqrt{2mw\hbar}}=\pm w\hbar\hat{a}_{\pm}.
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        &
+    \end{aligned}
+\end{equation}
+\subsubsection{埃伦费斯特定理(Ehrenfest Theorem)}
+
+\begin{equation}
+    \frac{d}{dt}<A>=\frac{1}{i\hbar}<[A,H]>+<\frac{\partial A}{\partial t}> \\
+\end{equation}
+
+\quad \newline
+
+简单的推导过程:
+\begin{equation}
+    \begin{aligned}
+        &\frac{d}{dt}\langle A \rangle=\frac{d}{dt}\int\psi^{*}A\psi dx\\
+        &=\int(\frac{\partial \psi^{*}}{\partial t})A\psi dx+\int\psi^{*}(\frac{\partial A}{\partial t})\psi dx+\int\psi^{*}A(\frac{\partial \psi}{\partial t})dx\\
+        &=\int(\frac{\partial \psi^{*}}{\partial t})A\psi dx+\langle\frac{\partial A}{\partial t}\rangle+\int\psi^{*}A(\frac{\partial \psi}{\partial t})dx\\
+        &\xrightarrow{H\psi=i\hbar\frac{\partial\psi}{\partial t},(H\psi)^{*}=-i\hbar\frac{\partial\psi^{*}}{\partial t},(H\psi)^{*}=\psi^{*}H^{*}=\psi^{*}H}\\
+        &=\frac{1}{i\hbar}\int\psi^{*}(AH-HA)\psi dx+\langle\frac{\partial A}{\partial t}\rangle\\
+        &=\frac{1}{i\hbar}\langle[A,H]\rangle+\langle\frac{\partial A}{\partial t}\rangle\\
+    \end{aligned}
+\end{equation}
+\quad \newline
+部分物理量的期望值对时间求导的推导
+\begin{equation}
+    \begin{aligned}
+        &\text{位置期望值对时间求导}\\
+        &H(x,p,t)=\frac{p^2}{2m}+V(x,t)\\
+        &\frac{d}{dt}\langle x\rangle=\frac{1}{i\hbar}\langle[x,H]\rangle+\langle\frac{\partial x}{\partial t}\rangle=\frac{1}{i\hbar}\langle[x,H]\rangle\\
+        &=\frac{1}{i2m\hbar}\langle[x,p^2]\rangle=\frac{1}{i2m\hbar}\langle xpp-ppx\rangle.\\
+        &\xrightarrow{xpp-ppx=i2\hbar p}\frac{d}{dt}\langle x\rangle=\frac{1}{m}\langle p\rangle=\langle v\rangle.
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+        &\text{动量期望值对时间求导}\\
+        &\frac{d}{dt}\langle p\rangle=\frac{1}{i\hbar}\langle[p,H]\rangle+\langle\frac{\partial p}{\partial t}\rangle\\
+        &\xrightarrow{p=\frac{\hbar}{i}\frac{\partial}{\partial x}\longrightarrow[p,p^2]=0}\\
+        &\frac{d}{dt}\langle p\rangle=\frac{1}{i\hbar}\langle[p,V]\rangle\\
+        &=\int\psi^{*}V\frac{\partial}{\partial x}\psi dx-\int\psi^{*}\frac{\partial}{\partial x}(V\psi)dx=\langle-\frac{\partial}{\partial x}V\rangle.
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+        &\text{xp的期望值对时间求导(Virial Theorem位力定理)}\\
+        &\text{证明:}\frac{d}{dt}\langle xp\rangle=2\langle T\rangle-\langle x\frac{dV}{dx}\rangle\\
+        &\frac{d}{dt}\langle xp\rangle=\frac{i}{\hbar}\langle[H,xp]\rangle;[H,xp]=[H,x]p+x[H,p];[H,x]=-\frac{i\hbar p}{m};[H,p]=i\hbar\frac{\partial V}{\partial x}\\
+        &\Longrightarrow\frac{d}{dt}\langle xp\rangle=\frac{i}{\hbar}[-\frac{i\hbar}{m}\langle p^2\rangle+i\hbar\langle x\frac{\partial V}{\partial x}\rangle]\\
+        &=2\langle\frac{p^2}{2m}\rangle-\langle x\frac{\partial V}{\partial x}\rangle=2\langle T\rangle-\langle x\frac{\partial V}{\partial x}\rangle\\
+    \end{aligned}
+\end{equation}
+%%%以下为插入图片模板
+%\quad \newline
+%	\begin{figure}[!htbp]
+%		\centering
+%		\includegraphics[width=0.5\textwidth,height=0.375\textwidth]{pictures/minscale.png}
+%		\caption{最小风向} \label{minsacle}
+%	\end{figure}
+
+%%%以下为插入图片模板
+%\quad \newline
+%	\begin{figure}[!htbp]
+%		\centering
+%		\includegraphics[width=0.5\textwidth,height=0.375\textwidth]{pictures/minscale.png}
+%		\caption{最小风向} \label{minsacle}
+%	\end{figure}
+
+%    \begin{algorithm}
+%		\caption{Title of the Algorithm}
+%     	\begin{algorithmic}[1]
+%			\REQUIRE some words.  % this command shows "Input"
+%			\ENSURE ~\\           % this command shows "Initialized"
+%			some text goes here ... \\
+%			\WHILE {\emph{not converged}}
+%			\STATE ... \\  % line number at left side
+%			\ENDWHILE
+%			\RETURN this is the lat part.  % this command shows "Output"
+%		\end{algorithmic}
+%	\end{algorithm}
+
+\end{document}
