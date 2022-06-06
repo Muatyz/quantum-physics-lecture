@@ -1,0 +1,174 @@
+\documentclass[UTF8,a4paper,7pt,twocolumn]{ctexart}
+\usepackage[left=0.2cm, right=0.2cm, top=0.2cm, bottom=0.2cm]{geometry}
+%页边距
+\CTEXsetup[format={\Large\bfseries}]{section} %设置章标题居左
+%%%%%%%%%%%%%%%%%%%%%%%
+% -- text font --
+% compile using Xelatex
+%%%%%%%%%%%%%%%%%%%%%%%
+% -- 中文字体 --
+%\setmainfont{Microsoft YaHei}  % 微软雅黑
+%\setmainfont{YouYuan}  % 幼圆    
+%\setmainfont{NSimSun}  % 新宋体
+%\setmainfont{KaiTi}    % 楷体
+%\setmainfont{SimSun}   % 宋体
+%\setmainfont{SimHei}   % 黑体
+% -- 英文字体 --
+%\usepackage{times}
+%\usepackage{mathpazo}
+%\usepackage{fourier}
+%\usepackage{charter}
+
+%\usepackage{helvet}
+
+\usepackage{amsmath, amsfonts, amssymb} % math equations, symbols
+\usepackage[english]{babel}
+\usepackage{color}	% color content
+\usepackage{graphicx}	% import figures
+\usepackage{url}	% hyperlinks
+\usepackage{bm} 	% bold type for equations
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{epstopdf}
+\usepackage{epsfig}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{zhnumber}
+\usepackage{longtable}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subfigure}
+\renewcommand\thesection{\zhnum{section}}
+\renewcommand\thesubsection{\arabic{section}}
+\renewcommand{\algorithmicrequire}{ \textbf{Input:}}
+% use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{ \textbf{Initialize:}}
+% use Initialize in the format of Algorithm  
+\renewcommand{\algorithmicreturn}{ \textbf{Output:}}
+% use Output in the format of Algorithm
+%%简化编写公式难度
+\usepackage{braket} %量子算符宏包
+\usepackage{cancel}%表示项的消去 
+
+%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,%设置行号位置none不显示行号
+  %numberstyle=\tiny\courier, %设置行号大小
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  escapeinside=``,%逃逸字符(1左面的键)，用于显示中文例如在代码中`中文...`
+  tabsize=4,
+  extendedchars=false %解决代码跨页时，章节标题，页眉等汉字不显示的问题
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr} %设置页眉、页脚
+
+\lhead{}
+\chead{}
+%\rhead{\includegraphics[width=1.2cm]{fig/ZJU_BLUE.eps}}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%  设置水印
+%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{draftwatermark}         % 所有页加水印
+%\usepackage[firstpage]{draftwatermark} % 只有第一页加水印
+% \SetWatermarkText{Water-Mark}           % 设置水印内容
+% \SetWatermarkText{\includegraphics{fig/ZJDX-WaterMark.eps}}         % 设置水印logo
+% \SetWatermarkLightness{0.9}             % 设置水印透明度 0-1
+% \SetWatermarkScale{1}                   % 设置水印大小 0-1    
+
+\usepackage{hyperref} %bookmarks
+\hypersetup{colorlinks, bookmarks, unicode} %unicode
+
+\begin{document}
+
+      \textbf{积分公式}.
+      $\int_{-\infty}^{\infty}exp[ix^2]dx=\sqrt{\pi}exp[i\pi/4]$(Fresnel积分公式);
+      $\int_{-\infty}^{\infty}dxexp[-\alpha x^2+\beta x]=\sqrt{\frac{\pi}{\alpha}}exp[\frac{\beta^2}{4\alpha}]$,
+      $\int_{0}^{+\infty}x^{n}exp[-ax^{2}]dx=\frac{\Gamma(\frac{n+1}{2})}{2a^{\frac{n+1}{2}}}$,
+      $\int_{-\infty}^{+\infty}xexp[-\frac{1}{2}ax^2+bx]dx=\frac{b}{a}\sqrt{\frac{2\pi}{a}}exp[b^2/(2a)]$,
+      $\int_{-\infty}^{+\infty}x^{2}exp[-\frac{1}{2}ax^2+bx]dx=\frac{1}{a}(1+\frac{b^{2}}{a})\sqrt{\frac{2\pi}{a}}exp[b^{2}/(2a)]$;
+      $\int_{-\infty}^{+\infty}x^{2n}exp[-\frac{1}{2}ax^{2}]dx=\frac{(2n-1)!!}{a^{n}}\sqrt{\frac{2\pi}{a}}$(广义Guass积分式);
+      $\int_{0}^{+\infty}x^{2n+1}exp[-ax^{2}]dx=\frac{n!}{2a^{n+1}}$;
+      $(\frac{1}{\sqrt{2\pi\hbar}})^{3}\iiint exp[-\frac{i}{\hbar}\vec{p}'\cdot\vec{r}](p_{z}\frac{\partial}{\partial p_{y}}-p_{y}\frac{\partial}{\partial p_{z}})exp[\frac{i}{\hbar}\vec{p}\cdot\vec{r}]d\tau=(p_{z}\frac{\partial}{\partial p_{y}}-p_{y}\frac{\partial}{\partial p_{z}})(\frac{1}{\sqrt{2\pi\hbar}})^{3}\iiint exp[\frac{i}{\hbar}(\vec{p}-\vec{p}')\cdot\vec{r}]d\tau=(p_{z}\frac{\partial}{\partial p_{y}}-p_{y}\frac{\partial}{\partial p_{z}})\delta(\vec{p}-\vec{p}')$\\
+      \textbf{基础知识}
+      1.$\lambda=h/p,E=hc/\lambda,\lambda=h/\sqrt{2mE}$;
+      2.$\hat{p}=-i\hbar\frac{\partial}{\partial x},\hat{x}=i\hbar\frac{\partial}{\partial p}$;
+      3.简并度(求有序对数量)e.g.(无限高势垒立方)$E=\frac{\pi^{2}\hbar^{2}}{2ma^2}(n_{x}^{2}+n_{y}^{2}+n_{z}^{2})$,求$(n_{x},n_{y},n_{z})$对数(1/3/3/3/1/6...);
+      4.玻尔半径$a_{0}=\frac{4\pi\epsilon_{0}\hbar^{2}}{m_{e}e^{2}}$;
+      5.量子数关系:$n=1,2,3...;l=0,1,2...n-1;m_{l}=0,\pm 1,\pm 2...\pm l;m_{s}=\pm\frac{1}{2}$;
+      6.磁矩与哈密顿量:$\hat{H}_{B}=-\gamma\cdot\vec{B}\cdot\vec{S}(\vec{S}:Spin)$;
+      7.$s=1(triplet)\ket{11}=uu,\ket{10}=\frac{1}{\sqrt{2}}(ud+du),\ket{1-1}=dd;s=0(singlet)\ket{00}=\frac{1}{\sqrt{2}}(ud-du)$
+      8.$\oint p_{k}\mathrm{d}q_{k}=n_{k}h,n_{k}=1,2,3\dots$(\textbf{Bohr-Sommerfiled条件})e.g.($V(x)=\frac{mw^2x^2}{2}$)$\oint p\mathrm{d}x=2\int_{-a}^{a}\mathrm{d}x\sqrt{2m(E-\frac{1}{2}mw^2x^2)}$;转动惯量为$I$,$L\cdot 2\pi=nh$,$L=n\hbar$,$E=\frac{L^2}{2I}=\frac{n^2\hbar^2}{2I}$\\
+      \textbf{已知$\psi(x,0)$,求$\psi(x,t)$}1.一维自由传播子$G(x,x';t,t')=\sqrt{\frac{m}{2\pi\hbar it}}exp[\frac{im}{2\hbar}\frac{(x-x')^2}{t-t'}],$e.g.$\psi(x,0)=\delta(x),\psi(x,t)=\int_{-\infty}^{\infty}dx'G(x,x';t,t')\psi(x,0)=\frac{1}{(2\pi\hbar)^{1/2}}exp[i(p_{0}x-\frac{p_{0}^2t}{2m})/\hbar]$;2.不含时$\hat{H}$.解基函数$\psi_{n}(x)$,展开$\psi(x,0)=\sum_{n=1}^{+\infty}c_{n}\psi_{n}(x),c_{m}=\int\psi_{m}^{*}\psi(x,0)dx,\psi(x,t)=\sum_{n=1}^{+\infty}c_{n}\psi_{n}(x)exp[-iE_{n}t/\hbar]$\\
+      \textbf{已知V(x,y)求简并度}分离变量法.$E=E_{x}+E_{y}$,拆分方程.e.g.$V(x,y)=\frac{1}{2}\mu\omega^{2}(x^{2}+y^{2}),\therefore \psi(x,y)=X(x)Y(y),(-\frac{\hbar^{2}}{2\mu}\frac{\partial^{2}}{\partial y^{2}}+\frac{1}{2}\mu\omega^{2}y^{2})Y=E_{y}Y,(-\frac{\hbar^{2}}{2\mu}\frac{\partial^{2}}{\partial x^{2}}+\frac{1}{2}\mu\omega^{2}x^{2})X=E_{x}X=(E-E_{y})X$,$E_{y}=(n_{y}+\frac{1}{2})\hbar\omega,E_{x}=(n_{x}+\frac{1}{2})\hbar\omega,E=E_{x}+E_{y}=\hbar\omega(n+1)$所以简并度为($n+\frac{1}{2}$)\\
+      \textbf{含时波函数求势能}代入薛定谔方程即可.$-\frac{\hbar^2}{2m}\frac{\partial^{2}\psi(x,t)}{\partial x^{2}}+V(x,t)\psi(x,t)=i\hbar\frac{\partial\psi(x,t)}{\partial t}$\\
+      \textbf{已知$\psi(x)$求E可能值与P(E)}$\psi(x)=\sum c_{n}\psi_{n}(x),c_{n}=\int\psi_{n}^{*}\psi(x)dx$($\psi_{n}$应归一化)\\
+      \textbf{概率流}对定态S.E.,有$\frac{\partial\psi}{\partial t}=\frac{i\hbar}{2m}\frac{\partial^{2}\psi}{\partial x^{2}}-\frac{i}{\hbar}V\psi,\frac{\partial\psi^{*}}{\partial t}=-\frac{i\hbar}{2m}\frac{\partial^{2}\psi^{*}}{\partial z^{2}}+\frac{i}{\hbar}V^{*}\psi^{*},\therefore(whenV^{*}=V)\frac{\partial}{\partial t}|\psi|^{2}=\frac{i\hbar}{2m}(\psi^{*}\frac{\partial^{2}}{\partial x^{2}}-\frac{\partial^{2}\psi^{*}}{\partial x^{2}})=\frac{\partial}{\partial x}[\frac{i\hbar}{2m}(\psi^{*}\frac{\partial\psi}{\partial x}-\frac{\partial\psi^{*}}{\partial x}\psi)]$\\
+      \textbf{一维散射}0.基础结论(一维无限深:宽为a,$\psi_{n}=\sqrt{\frac{2}{a}}\sin{\frac{n\pi x}{a}},E_{n}=\frac{n^2h^2}{8ma^2}$)1.方法(1)按势能分段求解基函数(2)待定系数法(基函数的线性组合)(3)求解条件$\psi_{1}(a)=\psi_{2}(a),\psi_{1}'(a)=\psi_{2}'(a)$(4);$\lim_{x\longrightarrow\infty}\psi(x)=0;(5)$节点(e.g.无限深势阱的壁处为0)分偶宇称态$\psi(-x)=\psi(x)$和奇宇称态$\psi(-x)=-\psi(x)$来讨论;2.方势垒穿透(0,$V_{0}$,0):$\psi(x)=exp[ikx]+Rexp[-ikx](x\leq0);Sexp[ikx](x\geq a);Aexp[\kappa x]+Bexp[-\kappa x](k=\sqrt{2mE}/\hbar,\kappa=\sqrt{2m(V_{0}-E)}/\hbar).|S|^{2}=\frac{4k^{2}\kappa^{2}}{(k^{2}+\kappa^{2}\sinh^{2}\kappa a+4k^{2}\kappa^{2})}=[1+\frac{1}{E/V_{0}(1-E/V_{0})}\sinh^{2}\kappa a]^{-1},|R|^{2}=\frac{(k^{2}+\kappa^{2})\sinh^{2}\kappa a}{(k^{2}+\kappa^{2})^{2}\sinh^{2}\kappa a+4k^{2}\kappa^{2}}$3.$\delta$势垒/势阱($V(x)=\gamma\delta(x)$)$\psi(x)=exp[ikx]+Rexp[-ikx](x\leq 0);Sexp[ikx](x\geq 0)$,跃变条件$\psi'(0^{+})-\psi'(0^{-})=\frac{2\mu\gamma}{\hbar^{2}}\psi_{0}.S=\frac{1}{1+i\mu\gamma/\hbar^{2}k},R=-\frac{i\mu\gamma}{\hbar^{2}k}/(1+\frac{i\mu\gamma}{\hbar^{2}k})(V(x)=-\gamma\delta(x))$,跃变条件$\psi'(0^{+})-\psi'(0^{-})=-\frac{2\mu\gamma}{\hbar^{2}}\psi_{0}$,$\beta=\sqrt{-2\mu E}/\hbar,\psi(x)=\frac{1}{\sqrt{L}}exp[-|x|/L](\sqrt{\beta}=1/\sqrt{L},L=1/\beta=\frac{\hbar^{2}}{\mu\gamma})$(只有偶宇称态)\\
+      \textbf{表象变换}1.傅里叶变换.$-\frac{\hbar^2}{2\mu}\frac{\partial^2}{\partial x^2}\psi(x)+V(x)\psi(x)=E\psi(x)$,$\frac{p^2}{2\mu}\varphi(p)+V(i\hbar\frac{\partial}{\partial p})\varphi(p)=E\varphi(p)$(3D:$\frac{\boldsymbol{p}^2}{2\mu}\phi(\boldsymbol{p})+V(i\hbar\nabla_{p})\phi(\boldsymbol{p})=E\phi(\boldsymbol{p}),or \frac{p^2}{2m}\phi(p)+\int_{-\infty}^{\infty}V(pp')\phi(p')dp'=E\phi(p)(V_{pp'}=\frac{1}{2\pi\hbar}\int_{-\infty}^{\infty}dxV(x)e^{i(p-p')x/\hbar})$);$\psi(x,t)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}\varphi(p,t)exp[ipt]dp;\varphi(p,t)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}\psi(x,t)exp[-ipx]dx$;2.表象变换理论$\hat{F}\psi=\lambda\psi,\hat{F'}\phi=\hat{S}^{-1}\hat{F}\hat{S}\hat{S}^{-1}\psi=\hat{S}^{-1}\hat{F}\psi=\lambda\hat{S}^{-1}\psi=\lambda\phi$,$tr(\hat{F'})=tr(\hat{S}^{-1}\hat{F}\hat{S})=tr(\hat{F}\hat{S}\hat{S}^{-1})=tr \hat{F}$\\
+      \textbf{厄密多项式}1.$\text{定义}H_{n}(x)=(-1)^{n}exp[x^{2}]\frac{d^{n}}{dx^{n}}exp[-x^{2}]$,e.g.$H_{0}=1,H_{1}=2x,H_{2}=4x^{2}-2,H_{3}=8x^{3}-12x,H_{4}=16x^4-48x^{2}+12,H_{5}=32x^{5}-160x^3+120x$;2.谐振子$\psi_{n}(x)=\sqrt{\frac{\alpha}{2^{n}n!\sqrt{\pi}}}exp[-\alpha^{2}x^{2}/2]H_{n}(\alpha x),\alpha=\frac{\mu\omega}{\hbar}$(思路:换元简化方程,极限值猜测形式为$\psi(\xi)=H(\xi)exp[-\xi^2/2]$,级数解法.)\\
+      \textbf{对易运算}1.$\text{定义}[\hat{A},\hat{B}]=\hat{A}\hat{B}-\hat{B}\hat{A}([\hat{A},\hat{B}]=0$,$\hat{A}\hat{B}\Ket{\psi}=\hat{B}\hat{A}\Ket{\psi})$;2.$\text{展开式}[\hat{A}\hat{B},\hat{C}]=\hat{A}\hat{B}\hat{C}-\hat{C}\hat{A}\hat{B}=(\hat{A}\hat{B}\hat{C}-\hat{A}\hat{C}\hat{B})+(\hat{A}\hat{C}\hat{B}-\hat{C}\hat{A}\hat{B})=\hat{A}[\hat{B},\hat{C}]+[\hat{A},\hat{C}]\hat{B}$,$[\hat{A},\hat{B}\hat{C}]=\hat{B}[\hat{A},\hat{C}]+[\hat{A},\hat{B}]\hat{C}$\\
+      \textbf{对易关系}
+    $\text{笛卡尔下:}[\hat{x}_{i},\hat{x}_{j}]=0$,
+    $[\hat{p}_{i},\hat{p}_{j}]=0$,
+    $[\hat{x}_{i},\hat{p}_{j}]=i\hbar\delta_{ij}$;
+    $[\hat{L}_{i},\hat{x}_{j}]=i\hbar\epsilon_{ijk}\hat{x}_{k}$
+    $(\epsilon_{ijk}=1,if\text{(i,j,k)}(even);-1,if\text{(i,j,k)}(odd);0,others)$,
+    $[\hat{L}_{i},\hat{p}_{j}]=i\hbar\epsilon_{ijk}\hat{p}_{k}$,
+    $[\hat{L}_{i},\hat{L}_{j}]=i\hbar\epsilon_{ijk}\hat{L}_{k}$
+    $(\hat{L}\times\hat{L}=i\hbar\hat{L})$,
+    $[\hat{L}_{i},\hat{F}]=0$,$\hat{F}\text{(any scalar)},$
+    $[\hat{L}_{i},\hat{F}]=i\hbar\epsilon_{ijk}\hat{F}_{k},\hat{F}\text{(any vector)}$,
+    $[\hat{L}^{2},\hat{L}_{i}]=0$,
+    $[\hat{L},\hat{p}^{2}]=0$,
+    $[\hat{L}^{2},\hat{p}^{2}]=0$,
+    $[\hat{L}_{i},\hat{p}^{2}]=0$,
+    $[\hat{L},\hat{r}^{2}]=0$,
+    $[\hat{L}_{i},\hat{r}^{2}]=0$,
+    $[\hat{L},\hat{U}(r)]=[\hat{L}^{2},\hat{U}(r)]=0(\hat{U}(r),\text{any radial})$,
+    $[\hat{S}_{i},\hat{S}_{j}]=i\hbar\epsilon_{ijk}\hat{S}_{k}$
+    $(\text{anti-reciprocal}:\hat{S}_{i}\hat{S}_{j}+\hat{S}_{j}\hat{S}_{i}=0)$;
+    $[S^{2},S_{z}]=0$;$[\hat{f}$,
+    $\hat{p}_{i}]=i\hbar\frac{\partial f}{\partial x_{i}}$\\
+      \textbf{若干定理}1.Ehrenfest Theorem$\frac{d}{dt}\langle A\rangle=\frac{1}{i\hbar}\langle[A,H]\rangle+\langle\frac{\partial A}{\partial t}\rangle(Proof.\frac{d}{dt}\langle A \rangle=\frac{d}{dt}\int\psi^{*}A\psi dx)=\int(\frac{\partial \psi^{*}}{\partial t})A\psi dx+\int\psi^{*}(\frac{\partial A}{\partial t})\psi dx+\int\psi^{*}A(\frac{\partial \psi}{\partial t})dx=\int(\frac{\partial \psi^{*}}{\partial t})A\psi dx+\langle\frac{\partial A}{\partial t}\rangle+\int\psi^{*}A(\frac{\partial \psi}{\partial t})dx,\because H\psi=i\hbar\frac{\partial\psi}{\partial t},(H\psi)^{*}=-i\hbar\frac{\partial\psi^{*}}{\partial t},(H\psi)^{*}=\psi^{*}H^{*}=\psi^{*}H,\therefore =\frac{1}{i\hbar}\int\psi^{*}(AH-HA)\psi dx+\langle\frac{\partial A}{\partial t}\rangle=\frac{1}{i\hbar}\langle[A,H]\rangle+\langle\frac{\partial A}{\partial t}\rangle$e.g.(1)$\langle x\rangle:H(x,p,t)=\frac{p^2}{2m}+V(x,t),\frac{d}{dt}\langle x\rangle=\frac{1}{i\hbar}\langle[x,H]\rangle+\langle\frac{\partial x}{\partial t}\rangle=\frac{1}{i\hbar}\langle[x,H]\rangle=\frac{1}{i2m\hbar}\langle[x,p^2]\rangle=\frac{1}{i2m\hbar}\langle xpp-ppx\rangle,\because xpp-ppx=i2\hbar p,\therefore \frac{d}{dt}\langle x\rangle=\frac{1}{m}\langle p\rangle=\langle v\rangle;(2)\langle p\rangle:\frac{d}{dt}\langle p\rangle=\frac{1}{i\hbar}\langle[p,H]\rangle+\langle\frac{\partial p}{\partial t}\rangle,\because p=\frac{\hbar}{i}\frac{\partial}{\partial x}\longrightarrow[p,p^2]=0,\therefore \frac{d}{dt}\langle p\rangle=\frac{1}{i\hbar}\langle[p,V]\rangle=\int\psi^{*}V\frac{\partial}{\partial x}\psi dx-\int\psi^{*}\frac{\partial}{\partial x}(V\psi)dx=\langle-\frac{\partial}{\partial x}V\rangle;$2.Virial Theorem(位力定理)$\frac{d}{dt}\langle xp\rangle=2\langle T\rangle-\langle x\frac{dV}{dx}\rangle(Proof.\frac{d}{dt}\langle xp\rangle=\frac{i}{\hbar}\langle[H,xp]\rangle;[H,xp]=[H,x]p+x[H,p];[H,x]=-\frac{i\hbar p}{m};[H,p]=i\hbar\frac{\partial V}{\partial x},\frac{d}{dt}\langle xp\rangle=\frac{i}{\hbar}[-\frac{i\hbar}{m}\langle p^2\rangle+i\hbar\langle x\frac{\partial V}{\partial x}\rangle]=2\langle\frac{p^2}{2m}\rangle-\langle x\frac{\partial V}{\partial x}\rangle=2\langle T\rangle-\langle x\frac{\partial V}{\partial x}\rangle)$ \\
+      \textbf{矩阵元}A第i行第j列元素$A_{ij}=\Bra{i}\hat{A}\ket{j}=\int u_{i}^{*}(a)\hat{A}u_{j}(a)da$,a为表象所用变量(动量表象就是p,位置表象就是x)\\
+      \textbf{升降算符-谐振子}1.构造$V(x)=\frac{1}{2}mw^2x^2,\hat{H}=\frac{\hat{p}^2+m^2w^2\hat{x}^2}{2m},\hat{a}_{\pm}=\frac{mw\hat{x}\mp i\hat{p}}{\sqrt{2mw\hbar}}$;2.运算性质:$(1)H(\hat{a}_{+}\psi)=(E+\hbar\omega)(\hat{a}_{+}\psi);H(\hat{a}_{-}\psi)=(E-\hbar\omega)(\hat{a}_{-}\psi);(2)\hat{a}_{+}\psi_{n}=\sqrt{n+1}\psi_{n+1};\hat{a}_{-}\psi_{n}=\sqrt{n}\psi_{n-1};(3)[\hat{H},\hat{a}_{\pm}]=\frac{1}{2m\sqrt{2mw\hbar}}[\hat{p}^2+m^2w^2\hat{x}^2,mw\hat{x}\mp i\hat{p}]=\frac{1}{2m\sqrt{2mw\hbar}}([\hat{p}^2,mw\hat{x}]\mp[\hat{p}^2,i\hat{p}]+[m^2w^2\hat{x}^2,mw\hat{x}]\pm[m^2w^2\hat{x}^2,i\hat{p}]),\because [\hat{p}^2,mw\hat{x}]=mw(\hat{p}[\hat{p},\hat{x}]+[\hat{p},\hat{x}]\hat{p})=-2imw\hbar\hat{p},[m^2w^2\hat{x}^2,i\hat{p}]=im^{2}w^{2}[\hat{x}^{2},\hat{p}]=im^2w^2(\hat{x}[\hat{x},\hat{p}]+[\hat{x},\hat{p}]\hat{x})=-2m^2w^2\hbar\hat{x},[\hat{p}^2,i\hat{p}]=[m^2w^2\hat{x}^2,mw\hat{x}]=0;[\hat{p},\hat{x}]=-i\hbar\therefore [\hat{H},\hat{a}_{\pm}]=\frac{-2imw\hbar\hat{p}\pm 2m^2w^2\hbar\hat{x}}{2m\sqrt{2mw\hbar}}=\pm\frac{w\hbar(mw\hat{x}\mp i\hat{p})}{2m\sqrt{2mw\hbar}}=\pm w\hbar\hat{a}_{\pm}(4)\psi_{n}=\frac{1}{\sqrt{n!}}(\hat{a}_{+})^{n}\psi_{0}\{PS.\psi_{0}=(\frac{m\omega}{\pi\hbar})^{1/4}exp[-\frac{m\omega}{2\hbar}x^{2}]\}$3.计算期望值.$\hat{a}_{\pm}=\frac{1}{2\hbar m\omega}(\mp i\hat{p}+m\omega x)\Longrightarrow x=\frac{\sqrt{2\hbar m\omega}}{2m\omega}(\hat{a}_{+}+\hat{a}_{-}),p=\frac{1}{2i}\sqrt{2\hbar m\omega}(\hat{a}_{-}-\hat{a}_{+});x=\sqrt{\frac{\hbar}{2m\omega}}(\hat{a}_{+}+\hat{a}_{-}),p=i\sqrt{\frac{\hbar\omega m}{2}}(\hat{a}_{+}-\hat{a}_{-});x^{2}=\frac{\hbar}{2m\omega}(\hat{a}_{+}^{2}+\hat{a}_{-}^{2}+\hat{a}_{+}\hat{a}_{-}+\hat{a}_{-}\hat{a}_{+}),p^{2}=-\frac{m\hbar\omega}{2}(\hat{a}_{+}^{2}+\hat{a}_{-}^{2}-\hat{a}_{+}\hat{a}_{-}-\hat{a}_{-}\hat{a}_{+});\langle\frac{1}{2}m\omega^{2}x^{2}\rangle=\frac{1}{2}m\omega^{2}\frac{\hbar}{2m\omega}\int\psi_{n}^{*}(\hat{a}_{+}^{2}+\hat{a}_{-}^{2}+\hat{a}_{+}\hat{a}_{-}+\hat{a}_{-}\hat{a}_{+})\psi_{n}dx=\frac{\hbar\omega}{4}[n+(n+1)]=\frac{\hbar\omega}{n+\frac{1}{2}};\langle x\rangle=\sqrt{\frac{\hbar}{2m\omega}}\int\psi_{n}^{*}(\hat{a}_{+}+\hat{a}_{-})\psi_{n}dx=0;\langle p\rangle=i\sqrt{\frac{m\hbar\omega}{2}}\int\psi_{n}^{*}(\hat{a}_{+}-\hat{a}_{-})\psi_{n}dx=0;\langle x^{2}\rangle=\frac{\hbar\omega}{2}(n+\frac{1}{2})\frac{2}{m\omega^{2}}=\frac{\hbar}{m\omega}(n+\frac{1}{2});\langle p^{2}\rangle=-\frac{m\hbar\omega}{2}\int\psi_{n}^{*}(\hat{a}_{+}^{2}+\hat{a}_{-}^{2}-\hat{a}_{+}\hat{a}_{-}-\hat{a}_{-}\hat{a}_{+})\psi_{n}dx;-\frac{m\hbar\omega}{2}[-n-(1+n)]=m\omega\hbar(n+\frac{1}{2});\langle T\rangle=\frac{p^2}{2m}=\frac{\hbar\omega}{2}(n+\frac{1}{2})$\\
+      \textbf{升降算符-角动量}1.定义$\hat{L}_{\pm}=\hat{L}_{x}\pm i\hat{L}_{y}$2.运算性质$\hat{L}_{+}\hat{L}_{-}=(\hat{L}_{x}+i\hat{L}_{y})(\hat{L}_{x}-i\hat{L}_{y})=\hat{L}_{x}^{2}+\hat{L}_{y}^{2}-i[\hat{L}_{x},\hat{L}_{y}]=\hat{L}^{2}-\hat{L}_{z}^{2},\therefore \hat{L}_{+}\hat{L}_{-}\Ket{lm}=\hbar^{2}l(l+1)\Ket{lm}-\hbar^{2}m^{2}\Ket{lm}+m\hbar^{2}\Ket{lm}=\hbar^{2}[l(l+1)-m(m+1)]\Ket{lm},\hat{L}_{-}\Ket{lm}=\hbar\sqrt{l(l+1)-m(m-1)}\Ket{l(m-1)};\hat{L}_{+}\Ket{lm}=\hbar\sqrt{l(l+1)-m(m+1)}\Ket{l(m+1)}$\\
+      \textbf{升降算符-(自旋)角动量}1.$\hat{L}_{z}$:$\hat{L}_{\pm}=\hat{L}_{x}\pm i\hat{L}_{y}$,有$[\hat{L}_{z},\hat{L}_{\pm}]=\pm\hbar\hat{L}_{\pm},\hat{L}_{z}\hat{L}_{\pm}\ket{\psi}=(c\pm\hbar)\ket{\psi}$2.$\hat{S}_{\pm}=\hat{S}_{x}\pm i\hat{S}_{y},[\hat{S}_{z},\hat{S}_{\pm}]=\pm\hbar\hat{S}_{\pm}$\\
+      \textbf{氢原子波函数-球谐函数}1.SE:$\{-\frac{\hbar^{{2}}}{2\mu}(\frac{1}{r^{2}})[\frac{\partial}{\partial r}(r^{2}\frac{\partial}{\partial r})+\frac{1}{\sin{\theta}}\frac{\partial}{\partial\theta}(\sin{\theta}\frac{\partial}{\partial\theta})+\frac{1}{\sin{\theta}^{2}}\frac{\partial^2}{\partial\varphi^{2}}]-V\}\psi=E\psi(\hat{L}^{2}=-\hbar^{2}[\frac{1}{\sin{\theta}}\frac{\partial}{\partial\theta}(\sin{\theta\frac{\partial}{\partial\theta}})+\sin{\theta}^{2}\frac{\partial^{2}}{\partial\varphi^{2}}]),\text{分离变量}\psi(r,\theta,\varphi)=R(r)Y_{lm}(\theta,\varphi),\frac{1}{R}\frac{d}{dr}(r^2\frac{dR}{dr})-\frac{2mr^2}{\hbar^2}[V(r)-E]=l(l+1),
+    \frac{1}{Y}[\frac{1}{\sin{\theta}}\frac{\partial}{\partial\theta}(\sin{\theta}\frac{\partial Y}{\partial\theta})+\frac{1}{\sin{\theta}^2}\frac{\partial^2 Y}{\partial\varphi^2}]=-l(l+1).$Y:$Y(\theta,\varphi)=\Theta(\theta)\varPhi(\varphi):{\frac{1}{\Theta}[\sin{\theta}\frac{d}{d\theta}(\sin{\theta}\frac{d\Theta}{d\theta})]+l(l+1)\sin{\theta}^{2}}+\frac{1}{\varPhi}\frac{d^2\varPhi}{d\varphi^2}=0$;
+    $\frac{1}{\Theta}[\sin{\theta}\frac{d}{d\theta}(\sin{\theta}\frac{d\Theta}{d\theta})]+l(l+1)\sin{\theta}^{2}=m^2,\frac{1}{\varPhi}\frac{d^2\varPhi}{d\varPhi^2}=-m^2,\varPhi=e^{-im\varphi}$
+    $\sin{\theta}\frac{d}{d\theta}(\sin{\theta}\frac{d\Theta}{d\theta})+[l(l+1)\sin{\theta}^2-m^2]\Theta=0,\Theta(\theta)=AP_{l}^{m}(\cos{\theta}),P_{l}^{m}(x)=(1-x^{2})^{|m|/2}(\frac{d}{dx})^{|m|}P_{l}(x),P_{l}(x)=\frac{1}{2^{l}l!}(\frac{d}{dx})^{l}(x^2-1)^{l}.|m|>l,P_{l}^{m}(x)=0,|m|\leq l$\\
+      \textbf{角动量算符,其本征值与性质}1.$\hat{L}_{z}:\hat{L}_{z}\psi(\phi)=-i\hbar\frac{d}{d\phi}\psi(\phi)=l_{z}\psi(\phi),\psi(\phi)=\psi(\phi+2\pi);l_{z}=m\hbar,(m=0,\pm 1,\pm 2\dotsb),\psi(\phi)=\frac{1}{\sqrt{2\pi}}e^{im\phi},\Bra{\psi_{m}}\Ket{\psi_{n}}=\delta_{mn};\hat{l}_{z}\Ket{\psi_{m}}=m\hbar\psi_{m},\Bra{\psi_{m}}\hat{l}_{z}=\Bra{\psi_{m}}m\hbar;[\hat{l}_{y},\hat{l}_{z}]=i\hbar\hat{l}_{x},\therefore\langle\hat{l}_{z}\rangle=\Bra{\psi_{m}}\hat{l}_{y}\hat{l}_{z}-\hat{l}_{z}\hat{l}_{y}\Ket{\psi_{m}}=m\hbar\Bra{\psi_{m}}\hat{l}_{y}-\hat{l}_{y}\Ket{\psi_{m}}=0;\langle\hat{l}_{x}\rangle=\langle\hat{l}_{y}\rangle=0;\langle i\hbar\hat{l}_{x}^{2}\rangle=\langle i\hbar\hat{l}_{y}^{2}\rangle+\Bra{Y_{lm}}\hat{l}_{y}\hat{l}_{x}\hat{l}_{z}-\hat{l}_{z}\hat{l}_{y}\hat{l}_{x}\Ket{Y_{lm}}=\langle i\hbar\hat{l}_{y}^{2}\rangle$2.算符的矩阵表示(1)$\ket{lm}$的$L_{x}=\frac{\hbar}{\sqrt{2}}[0,1,0;1,0,1;0,1,0],L_{y}=\frac{\hbar}{\sqrt{2}}[0,-i,0;i,0,-i;0,i,0]$;3.$\langle L^{2}\rangle=l(l+1)\hbar^{2}$4.角动量不确定性关系$\sigma_{L_{i}}\sigma_{L_{j}}\geq\frac{\hbar}{2}|\langle L_{k}\rangle|$\\
+      \textbf{自旋算符}1.定义$\hat{S}_{z}\Phi_{\frac{1}{2}}=\frac{\hbar}{2}\Phi_{\frac{1}{2}},\hat{S}_{z}\Phi_{-\frac{1}{2}}=\frac{\hbar}{2}\Phi_{-\frac{1}{2}},\therefore\hat{S}_{z}=\frac{\hbar}{2}\textit{diag}\{1,-1\}$;2.Puali算符:$\hat{\vec{S}}=\hbar\hat{\vec{\sigma}},\hat{\vec{S}_{i}}=\frac{\hbar}{2}\sigma_{i};\vec{S}\times\vec{S}=i\hbar\vec{S};\hat{S}^{2}=\frac{3\hbar^2}{4}\textit{diag}\{1,1\},S^{2}\Ket{s,m}=\hbar^{2}s(s+1)\Ket{s,m};[\hat{\sigma}_{i},\hat{\sigma}_{j}]=2i\epsilon_{ijk}\hat{\sigma}_{k},\hat{\sigma_{i}}\hat{\sigma_{j}}=i\epsilon_{ijk}\hat{\sigma_{k}},\sigma_{i}^{2}=1$;$S^2=s(s+1)\hbar^{2},S_{z}=m_{s}\hbar(m_{s}=-s,-s+1,...s-1,s)$4.$\sigma_{x}=[0,1;1,0],\sigma_{y}=[0,-i;i,0];\sigma_{z}=[1,0;0,-1]$;\\
+      \textbf{本征旋量}1.自旋的线性展开$\chi=[\alpha,\beta]^{T},\chi^{\dagger}\chi=1,\chi=c_{+}^{(x)}\chi_{+}^{(x)}+c_{-}^{(x)}\chi_{-}^{(x)},$2.求各自旋概率:$\sqrt{P_{x}(\frac{\hbar}{2})}=c_{+}^{(x)}=(\chi_{+}^{(x)})^{\dagger}\chi,\sqrt{P_{x}(-\frac{\hbar}{2})}=c_{-}^{(x)}=(\chi_{-}^{(x)})^{\dagger}\chi;\hat{S}_{x}\chi_{\pm}^{(x)}=\pm\frac{\hbar}{2}\chi_{\pm}^{(x)},\chi_{\pm}^{(x)}=\frac{1}{\sqrt{2}}[1,\pm 1]^{T};\hat{S}_{y}\chi_{\pm}^{(y)}=\pm\frac{\hbar}{2}\chi_{\pm}^{(y)},\chi_{\pm}^{(y)}=\frac{1}{\sqrt{2}}[1,\mp i]^{T}$;3.求自旋期望值:$\langle S_{x}\rangle=P_{x}(\frac{\hbar}{2})\frac{\hbar}{2}+P_{x}(-\frac{\hbar}{2})(-\frac{\hbar}{2});\langle S_{y}\rangle=\chi^{\dagger}\hat{S}_{y}\chi$\\
+      \textbf{C-G系数查表}1.顺展开:$\Ket{s,m}=\sum c_{s,s_{1},s_{2}}^{m,m_{1},m_{2}}\Ket{s_{1},m_{1}}\Ket{s_{2},m_{2}}$.e.g.对$s_{1}=2,s_{1}=1$的两粒子,求其$s=3,m=0$的组合方式.找到$2\times 1$的表格,找到$[3,0]^{T}$的一列,列的左边则是有详细的$(m_1,m_2)$的信息.$\Ket{3,0}=\sqrt{\frac{1}{5}}\Ket{2,+1}\Ket{1,-1}+\sqrt{\frac{3}{5}}\Ket{2,0}\Ket{1,0}+\sqrt{\frac{1}{5}}\Ket{2,-1}\Ket{1,+1}$2.逆展开:$\Ket{s_{1},m_{1}}\Ket{s_{2},m_{2}}=\sum_{s}C_{s,s_{1},,s_{2}}^{m,m_{1},m_{2}}\Ket{s,m}.$比如要对$\frac{3}{2}\times 1$的$m_{1}=\frac{1}{2},m_{2}=0$状态进行展开,即有$\Ket{\frac{3}{2},1,\frac{1}{2},0}=\sqrt{\frac{3}{5}}\Ket{\frac{5}{2},+\frac{1}{2}}+\sqrt{\frac{1}{15}}\Ket{\frac{3}{2},+\frac{1}{2}}+(-1)\sqrt{\frac{1}{3}}\Ket{\frac{1}{2},+\frac{1}{2}}$(线性展开时,取系数应开根,符号在根号外)\\
+    $Vocabulary$\\
+
+
+
+\end{document}
